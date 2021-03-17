@@ -1,0 +1,17 @@
+{
+  "name": "anti-anti-ad",
+  "description": "remove anti ad-blocker pop-up from websites",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["removeAntiAdBlocker.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ]
+}
