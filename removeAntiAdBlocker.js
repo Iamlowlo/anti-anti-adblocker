@@ -1,7 +1,7 @@
-const removeOverflow = () => new Promise(resolve => {
+const removeOverflow = (nodeSelector) => new Promise(resolve => {
   setTimeout(() => {
     let removed = false
-    for (const fcAbRoot of document.querySelectorAll('.fc-ab-root').values()) {
+    for (const fcAbRoot of document.querySelectorAll(nodeSelector).values()) {
       fcAbRoot.remove()
       removed = true
     }
@@ -18,7 +18,10 @@ const recursiveRetry = async () => {
   const hasBeenRemoved = await removeOverflow()
   retryCount = hasBeenRemoved ? 0 : retryCount - 1
   if (retryCount) {
-    await recursiveRetry()
+    await Promise.all([
+      removeOverflow('.fc-ab-root'),
+      removeOverflow('.ev-open-modal-paywall-ADB_DETECTION')
+    ])
   }
 }
 
@@ -26,5 +29,8 @@ console.log('-- Anti Anti AdBlocker v2.0 --')
 recursiveRetry().then()
 
 window.addEventListener('load', async function() {
-    await removeOverflow()
+  await Promise.all([
+    removeOverflow('.fc-ab-root'), // marca / el país
+    removeOverflow('.ev-open-modal-paywall-ADB_DETECTION') // la vanguardia
+  ])
 })
