@@ -9,6 +9,13 @@
         "<all_urls>"
       ],
       "js": ["removeAntiAdBlocker.js"]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start",
+      "js": ["recoverSignInContent.js"]
     }
   ],
   "permissions": [
