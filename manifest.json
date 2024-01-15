@@ -1,7 +1,7 @@
 {
   "name": "anti-anti-ad",
   "description": "remove anti ad-blocker pop-up from websites",
-  "version": "1.3",
+  "version": "1.4",
   "manifest_version": 3,
   "content_scripts": [
     {
