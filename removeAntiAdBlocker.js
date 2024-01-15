@@ -3,6 +3,7 @@ const WALL_SELECTORS = [
   '.ev-open-modal-paywall-ADB_DETECTION',
   '#didomi-host',
   '[data-nosnippet="data-nosnippet"] div div',
+  '#pmConsentWall'
 ]
 const removeOverflow = (nodeSelector) => new Promise(resolve => {
   setTimeout(() => {
