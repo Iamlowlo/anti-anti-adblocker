@@ -3,7 +3,10 @@ const WALL_SELECTORS = [
   '.ev-open-modal-paywall-ADB_DETECTION',
   '#didomi-host',
   '[data-nosnippet="data-nosnippet"] div div',
-  '#pmConsentWall'
+  '#pmConsentWall',
+  '.pur-root',
+  '#popup1',
+  '#containerBlockLayer'
 ]
 const removeOverflow = (nodeSelector) => new Promise(resolve => {
   setTimeout(() => {
@@ -16,7 +19,7 @@ const removeOverflow = (nodeSelector) => new Promise(resolve => {
     const body = document.getElementsByTagName('body')[0]
     body.setAttribute('style', 'overflow: initial !important')
     resolve(removed)
-  }, 5)
+  }, 200)
 })
 
 let retryCount = 6
@@ -25,7 +28,6 @@ const recursiveRetry = async () => {
   const hasBeenRemoved = await removeOverflow()
   retryCount = hasBeenRemoved ? 0 : retryCount - 1
   if (retryCount) {
-    console.log(retryCount, '<= retryCount')
     await Promise.all(WALL_SELECTORS.map(removeOverflow))
   }
 }
